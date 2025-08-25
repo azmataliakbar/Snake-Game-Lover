@@ -4,16 +4,16 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
-    ChevronDown,
-    ChevronLeft,
-    ChevronRight,
-    ChevronUp,
-    Gauge,
-    Pause,
-    Play,
-    RotateCcw,
-    Volume2,
-    VolumeX,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  Gauge,
+  Pause,
+  Play,
+  RotateCcw,
+  Volume2,
+  VolumeX,
 } from "lucide-react"
 import { useCallback, useEffect, useRef, useState } from "react"
 
@@ -474,10 +474,54 @@ export default function SnakeGame() {
                 {renderGrid()}
               </div>
             </Card>
+            {/* Mobile buttons directly under board */}
+            <Card className="p-4 bg-card/90 backdrop-blur-sm lg:hidden mt-4">
+              <div className="grid grid-cols-3 gap-2 max-w-48 mx-auto">
+                <div></div>
+                <Button
+                  onTouchStart={() => handleDirectionChange("UP")}
+                  onClick={() => handleDirectionChange("UP")}
+                  className="aspect-square bg-primary hover:bg-primary/80 text-primary-foreground"
+                  disabled={gameState !== "PLAYING"}
+                >
+                  <ChevronUp className="w-8 h-8" />
+                </Button>
+                <div></div>
+
+                <Button
+                  onTouchStart={() => handleDirectionChange("LEFT")}
+                  onClick={() => handleDirectionChange("LEFT")}
+                  className="aspect-square bg-primary hover:bg-primary/80 text-primary-foreground"
+                  disabled={gameState !== "PLAYING"}
+                >
+                  <ChevronLeft className="w-8 h-8" />
+                </Button>
+                <div></div>
+                <Button
+                  onTouchStart={() => handleDirectionChange("RIGHT")}
+                  onClick={() => handleDirectionChange("RIGHT")}
+                  className="aspect-square bg-primary hover:bg-primary/80 text-primary-foreground"
+                  disabled={gameState !== "PLAYING"}
+                >
+                  <ChevronRight className="w-8 h-8" />
+                </Button>
+
+                <div></div>
+                <Button
+                  onTouchStart={() => handleDirectionChange("DOWN")}
+                  onClick={() => handleDirectionChange("DOWN")}
+                  className="aspect-square bg-primary hover:bg-primary/80 text-primary-foreground"
+                  disabled={gameState !== "PLAYING"}
+                >
+                  <ChevronDown className="w-8 h-8" />
+                </Button>
+                <div></div>
+              </div>
+            </Card>
           </div>
 
-          <div className="w-full lg:w-80 space-y-4">
-            <Card className="p-4 bg-card/90 backdrop-blur-sm">
+          <div className="w-full lg:w-80 flex flex-col gap-4">
+            <Card className="p-4 bg-card/90 backdrop-blur-sm order-2 lg:order-1">
               <div className="space-y-4">
                 <div className="flex gap-2">
                   {gameState === "PLAYING" ? (
@@ -529,7 +573,7 @@ export default function SnakeGame() {
               </div>
             </Card>
 
-            <Card className="p-4 bg-card/90 backdrop-blur-sm">
+            <Card className="p-4 bg-card/90 backdrop-blur-sm order-3 lg:order-2">
               <div className="space-y-2">
                 <div className="text-sm text-muted-foreground">Theme</div>
                 <div className="flex gap-2">
@@ -548,7 +592,7 @@ export default function SnakeGame() {
               </div>
             </Card>
 
-            <Card className="p-4 bg-card/90 backdrop-blur-sm">
+            <Card className="p-4 bg-card/90 backdrop-blur-sm hidden lg:block">
               <div className="grid grid-cols-3 gap-2 max-w-48 mx-auto">
                 <div></div>
                 <Button
@@ -592,7 +636,7 @@ export default function SnakeGame() {
               </div>
             </Card>
 
-            <Card className="p-4 bg-card/90 backdrop-blur-sm">
+            <Card className="p-4 bg-card/90 backdrop-blur-sm order-4">
               <h3 className="font-bold text-primary mb-2">Controls</h3>
               <div className="text-sm text-muted-foreground space-y-1">
                 <div>Arrow Keys or WASD: Move</div>
