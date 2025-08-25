@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 7%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 212 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 13%;
+  --muted-foreground: 0 0% 53%;
+  --accent: 146 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 336 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 13%;
+  --ring: 212 100% 50%;
+  --chart-1: 212 100% 50%;
+  --chart-2: 146 100% 50%;
+  --chart-3: 336 100% 50%;
+  --chart-4: 60 100% 50%;
+  --chart-5: 24 100% 50%;
+  --radius: 0.625rem;
+}
+
+.dark {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 7%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 7%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 212 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 13%;
+  --muted-foreground: 0 0% 53%;
+  --accent: 146 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 336 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 20%;
+  --input: 0 0% 13%;
+  --ring: 212 100% 50%;
+  --chart-1: 212 100% 50%;
+  --chart-2: 146 100% 50%;
+  --chart-3: 336 100% 50%;
+  --chart-4: 60 100% 50%;
+  --chart-5: 24 100% 50%;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Snake Game Custom Styles */
+.snake-grid {
+  display: grid;
+  gap: 2px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: 8px;
+  box-shadow: 0 0 25px rgba(0, 200, 255, 0.3);
+}
+
+.grid-cell {
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  background-color: hsl(var(--muted));
+}
+
+.snake-head {
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.7);
+  border: 1px solid #00ccff;
+}
+
+.snake-body {
+  background: linear-gradient(135deg, #0099ff 0%, #0055ff 100%);
+  box-shadow: 0 0 8px rgba(0, 153, 255, 0.5);
+  border: 1px solid #0088ff;
+}
+
+.food {
+  background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+  box-shadow: 0 0 15px rgba(255, 65, 108, 0.7);
+  animation: pulse 1s infinite alternate;
+  border: 1px solid #ff3366;
+}
+
+@keyframes pulse {
+  from { transform: scale(0.95); }
+  to { transform: scale(1.05); }
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.7);
+}
+
+.control-btn {
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-glass {
+  background: rgba(17, 17, 17, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Fix for backdrop-filter not working in some browsers */
+@supports (backdrop-filter: blur(10px)) {
+  .card-glass {
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Eat flash effect on board */
+.eat-flash {
+  animation: eatflash 120ms ease;
+}
+
+@keyframes eatflash {
+  0% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { box-shadow: 0 0 30px rgba(0, 255, 153, 0.45); }
+  100% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+
+/* Slow flicker for title */
+.flicker-slow {
+  animation: flickerslow 6s infinite;
+}
+
+@keyframes flickerslow {
+  0% { opacity: 1; }
+  85% { opacity: 1; }
+  92% { opacity: 0; }
+  100% { opacity: 1; }
+}
