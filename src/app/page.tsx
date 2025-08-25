@@ -4,16 +4,16 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  ChevronUp,
-  Gauge,
-  Pause,
-  Play,
-  RotateCcw,
-  Volume2,
-  VolumeX,
+    ChevronDown,
+    ChevronLeft,
+    ChevronRight,
+    ChevronUp,
+    Gauge,
+    Pause,
+    Play,
+    RotateCcw,
+    Volume2,
+    VolumeX,
 } from "lucide-react"
 import { useCallback, useEffect, useRef, useState } from "react"
 
